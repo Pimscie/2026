@@ -1,171 +1,72 @@
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title></title>
-<style type="text/css">
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      background: #0078d4;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-
-    main {
-      padding: 40px;
-    }
-
-    a {
-      color: #0078d4;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    section {
-      height: 800px; /* ruimte om het scroll-effect te laten zien */
-    }
-
-    iframe {
-      display: block;
-      width: 100%;
-      height: 500px;
-      border: 2px solid #0078d4;
-      border-radius: 8px;
-    }
-  </style>      <main>
-
 <style>
-a:link {
-  color: white;
-  background-color: transparent;
-  text-decoration: none;
-}
-a:visited {
-  color: white;
-  background-color: transparent;
-  text-decoration: none;
-}
-a:hover {
-  color: yellow;
-  background-color: transparent;
-  text-decoration: underline;
-}
-a:active {
-  color: blue;
-  background-color: transparent;
-  text-decoration: underline;
-}
+  /* Container voor het responsive Scratch-project */
+  .responsive-iframe-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 75%; /* 4:3 verhouding (portrait) */
+  }
+
+  .responsive-iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  /* In landscape: iets platter en maximale hoogte */
+  @media (orientation: landscape) {
+    .responsive-iframe-container {
+      padding-bottom: 50%;
+      max-height: 90vh;
+    }
+    .responsive-iframe-container iframe {
+      max-height: 90vh;
+    }
+  }
+
+  /* 🎮 Uitlegblok onder het project */
+  .scratch-info {
+    background: #fdf8f4; /* zacht oranjeachtig achtergrondje */
+    border-left: 6px solid #ff9f1c; /* Scratch-oranje accent */
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-top: 24px;
+    font-family: "Comic Sans MS";
+    font-size: 1.1rem; /* iets groter voor betere leesbaarheid */
+    color: #2b2b2b;
+    line-height: 1.8;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .scratch-info strong {
+    color: #0078d7; /* blauw accent zoals in Scratch-links */
+  }
+
+  /* 📱 Maak tekst iets groter op kleine schermen */
+  @media (max-width: 600px) {
+    .scratch-info {
+      font-size: 1.2rem;
+      padding: 18px 20px;
+    }
+  }
 </style>
 
-<section id="iframeSectie">
-<style type="text/css">
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      line-height: 1.6;
-      background-color: #f7f9fc;
-    }
+<!-- Scratch-project -->
+<div class="responsive-iframe-container">
+  <iframe 
+    src="https://scratch.mit.edu/projects/1227730295/embed"
+    allowfullscreen
+  ></iframe>
+</div>
 
-    header {
-      background: #0078d4;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-
-    main {
-      padding: 40px;
-    }
-
-    button {
-      background-color: #0078d4;
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      font-size: 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #005fa3;
-    }
-
-    .iframe-container {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.8s ease;
-      margin-top: 20px;
-    }
-
-    .iframe-container.open {
-      max-height: 800px; /* genoeg ruimte voor iframe */
-    }
-
-    iframe {
-      width: 100%;
-      height: 500px;
-      border: 2px solid #0078d4;
-      border-radius: 8px;
-    }
-  </style>     
-<main>
-<button id="openIframeBtn">Super PIMS Pong</button>
-<div id="iframeContainer" class="iframe-container"><iframe id="mijnIframe" src="" title="Inhoud iframe"></iframe> Klik op de groene vlag om te starten, selecteer het aantal spelers en de moelijkheidsgraad van de AI bij 1 speler. Beweeg je hockeystick op en neer om het doel te verdedigen en probeer te scoren. Gebruik &quot;W&quot; en &quot;S&quot; bij 1 speler. Bij 2 spelers gebruikt de 2e speler de pijltjestoetsen &quot;omhoog en omlaag&quot;. Klik op het groene vlaggetje om opnieuw te spelen en rode stopbordje om te stoppen met spelen.</div>
-</main>    
-<script>
-    const button = document.getElementById('openIframeBtn');
-    const container = document.getElementById('iframeContainer');
-    const iframe = document.getElementById('mijnIframe');
-
-    button.addEventListener('click', () => {
-      // Als het iframe nog dicht is, open het en laad de URL
-      if (!container.classList.contains('open')) {
-        iframe.src = 'https://scratch.mit.edu/projects/1227730295/embed'; // ?? vervang met je gewenste URL
-        container.classList.add('open');
-
-        // Wacht even tot de animatie start, dan scrollen
-        setTimeout(() => {
-          container.scrollIntoView({ behavior: 'smooth' });
-        }, 300);
-
-        button.textContent = 'Verberg';
-      } else {
-        // Sluit het iframe
-        container.classList.remove('open');
-        iframe.src = ''; // iframe ontladen om resources vrij te geven
-        button.textContent = 'Super PIMS Pong';
-      }
-    });
-</script>                 </meta>
-</meta>
-</section>   </main>    <script>
-    // Optioneel: glad scroll-effect
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        target.scrollIntoView({ behavior: 'smooth' });
-      });
-    });
-  </script>  &nbsp;              <script>
-    // Optioneel: glad scroll-effect
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        target.scrollIntoView({ behavior: 'smooth' });
-      });
-    });
-  </script>           </meta>
-</meta>
+<!-- Uitleg onder het project -->
+<div class="scratch-info">
+  🎮 <strong>Klik op de groene vlag</strong> om te starten, selecteer het aantal spelers en de moeilijkheidsgraad van de AI bij 1 speler.<br><br>
+  🏑 Beweeg je hockeystick op en neer om het doel te verdedigen en probeer te scoren.<br><br>
+  💻 Speel je op de PC? Gebruik dan de toetsen <strong>“W”</strong> en <strong>“S”</strong> bij 1 speler.<br>
+  👥 Bij 2 spelers gebruikt de tweede speler de pijltjestoetsen <strong>“omhoog”</strong> en <strong>“omlaag”</strong>.<br><br>
+  🔁 Klik opnieuw op het <strong>groene vlaggetje</strong> om te herstarten en op het <strong>rode stopbordje</strong> om te stoppen met spelen.
+</div>
