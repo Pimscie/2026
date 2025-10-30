@@ -1,11 +1,31 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Page Title</title>
-</head>
-<body>
+<style>
+  .responsive-iframe-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 75%; /* Hoogteverhouding in portrait */
+  }
 
-    <div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 75%;"><iframe src="https://scratch.mit.edu/projects/1227730295/embed" style="top: 0; left: 0; width: 100%; height: 100%; position: absolute; border: 0;"></iframe></div>
-Klik op de groene vlag om te starten, selecteer het aantal spelers en de moelijkheidsgraad van de AI bij 1 speler. Beweeg je hockeystick op en neer om het doel te verdedigen en probeer te scoren. Gebruik &quot;W&quot; en &quot;S&quot; bij 1 speler. Bij 2 spelers gebruikt de 2e speler de pijltjestoetsen &quot;omhoog en omlaag&quot;. Klik op het groene vlaggetje om opnieuw te spelen en rode stopbordje om te stoppen met spelen.
-</body>
-</html>
+  .responsive-iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  /* 📱 Pas de verhouding aan bij landscape modus */
+  @media (orientation: landscape) {
+    .responsive-iframe-container {
+      padding-bottom: 45%; /* Lager om meer breedte te benutten */
+    }
+  }
+</style>
+
+<div class="responsive-iframe-container">
+  <iframe 
+    src="https://scratch.mit.edu/projects/1227730295/embed"
+    allowfullscreen
+  ></iframe>
+</div>
