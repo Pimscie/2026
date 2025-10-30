@@ -16,7 +16,7 @@
     border: 0;
   }
 
-  /* In landscape: maak het iets platter en beperk hoogte */
+  /* In landscape: iets platter en maximale hoogte */
   @media (orientation: landscape) {
     .responsive-iframe-container {
       padding-bottom: 50%;
@@ -27,20 +27,30 @@
     }
   }
 
-  /* Stijl voor het tekstblok onder het project */
+  /* 🎮 Uitlegblok onder het project */
   .scratch-info {
-    background: #f8f8ff; /* zachte lichte achtergrond */
+    background: #fdf8f4; /* zacht oranjeachtig achtergrondje */
+    border-left: 6px solid #ff9f1c; /* Scratch-oranje accent */
     border-radius: 10px;
-    padding: 20px;
-    margin-top: 20px;
-    font-family: "Comic Sans MS", "Poppins", "Fredoka", cursive;
-    color: #333;
-    line-height: 1.6;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px 24px;
+    margin-top: 24px;
+    font-family: "Poppins", "Fredoka", "Comic Sans MS", cursive;
+    font-size: 1.1rem; /* iets groter voor betere leesbaarheid */
+    color: #2b2b2b;
+    line-height: 1.8;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
   }
 
   .scratch-info strong {
-    color: #0078d7;
+    color: #0078d7; /* blauw accent zoals in Scratch-links */
+  }
+
+  /* 📱 Maak tekst iets groter op kleine schermen */
+  @media (max-width: 600px) {
+    .scratch-info {
+      font-size: 1.2rem;
+      padding: 18px 20px;
+    }
   }
 </style>
 
@@ -56,7 +66,7 @@
 <div class="scratch-info">
   🎮 <strong>Klik op de groene vlag</strong> om te starten, selecteer het aantal spelers en de moeilijkheidsgraad van de AI bij 1 speler.<br><br>
   🏑 Beweeg je hockeystick op en neer om het doel te verdedigen en probeer te scoren.<br><br>
-  💻 Speel je op de PC dan kan je met 2 spelers tegen elkaar spelen! Gebruik dan de toetsen <strong>“W”</strong> en <strong>“S”</strong> bij 1 speler.<br>
+  💻 Speel je op de PC? Gebruik dan de toetsen <strong>“W”</strong> en <strong>“S”</strong> bij 1 speler.<br>
   👥 Bij 2 spelers gebruikt de tweede speler de pijltjestoetsen <strong>“omhoog”</strong> en <strong>“omlaag”</strong>.<br><br>
   🔁 Klik opnieuw op het <strong>groene vlaggetje</strong> om te herstarten en op het <strong>rode stopbordje</strong> om te stoppen met spelen.
 </div>
